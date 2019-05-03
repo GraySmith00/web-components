@@ -40,15 +40,24 @@ export namespace Components {
     */
     'middle'?: string;
   }
+
+  interface SideDrawer {
+    'title': string;
+  }
+  interface SideDrawerAttributes extends StencilHTMLAttributes {
+    'title'?: string;
+  }
 }
 
 declare global {
   interface StencilElementInterfaces {
     'MyComponent': Components.MyComponent;
+    'SideDrawer': Components.SideDrawer;
   }
 
   interface StencilIntrinsicElements {
     'my-component': Components.MyComponentAttributes;
+    'side-drawer': Components.SideDrawerAttributes;
   }
 
 
@@ -58,12 +67,20 @@ declare global {
     new (): HTMLMyComponentElement;
   };
 
+  interface HTMLSideDrawerElement extends Components.SideDrawer, HTMLStencilElement {}
+  var HTMLSideDrawerElement: {
+    prototype: HTMLSideDrawerElement;
+    new (): HTMLSideDrawerElement;
+  };
+
   interface HTMLElementTagNameMap {
     'my-component': HTMLMyComponentElement
+    'side-drawer': HTMLSideDrawerElement
   }
 
   interface ElementTagNameMap {
     'my-component': HTMLMyComponentElement;
+    'side-drawer': HTMLSideDrawerElement;
   }
 
 
