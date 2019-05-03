@@ -6,11 +6,46 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Web Components</title>
     <script src="tooltip.js"></script>
+    <script src="modal.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 2rem;
+        font-family: sans-serif;
+      }
+    </style>
   </head>
   <body>
     <p>
       <gs-tooltip text="This is no joke my dude">Web Components </gs-tooltip>
-      <gs-tooltip>Custom Elements </gs-tooltip>
+      <gs-tooltip></gs-tooltip>
     </p>
+    <button>Show Details & Confirm</button>
+    <gs-modal>
+      <h1 slot="title">Please Confirm</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
+        fugit quos voluptates odio placeat, quia tenetur maxime? Consequatur
+        fugit voluptas facilis, laborum, commodi unde error a suscipit quas ab
+        enim necessitatibus quia minus aliquam praesentium veniam dolorum, ipsa
+        nulla? Quae velit obcaecati fugiat unde officia possimus tempore dicta
+        perferendis corporis!
+      </p>
+    </gs-modal>
+
+    <script>
+      const confirmButton = document.querySelector('button');
+      const modal = document.querySelector('gs-modal');
+
+      confirmButton.addEventListener('click', () => {
+        // modal.setAttribute('opened', '');
+        if (!modal.isOpen) {
+          modal.open();
+        }
+      });
+    </script>
   </body>
 </html>
